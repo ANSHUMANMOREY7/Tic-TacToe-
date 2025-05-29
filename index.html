@@ -110,7 +110,10 @@
             2 : "player2",
         };
 
-      
+        let imgElement = {
+            1: "circle.png ",
+            2: "cross.png",
+        }
 
 
         function renderBoard (){
@@ -120,9 +123,13 @@
         boardElement.innerHTML = "";
         
         board.forEach(( cellElement , index )=> {
+
+            const cellPlayerImg = imgElement[cellElement];
+            const renderimage=cellPlayerImg ? `<img src = "${imgElement[cellElement]}"/> ` : "" ; 
+                     
             
             boardElement.innerHTML +=`
-              <div class="cell ${iconElement[cellElement]} "> </div>
+              <div class="cell ${iconElement[cellElement]} ">  ${renderimage}  </div>
             `
                   });
                 
