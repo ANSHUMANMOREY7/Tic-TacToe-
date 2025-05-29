@@ -72,7 +72,12 @@
             border: 0px solid rgb(183, 79, 187);
             background-color: rgb(122, 28, 172);
         }
-   
+        .player1{
+          background-color:rgb(107, 32, 148);
+        }
+        .player2{
+           background-color:rgb(107, 32, 148);
+        }
         
         </style>
 </head>
@@ -83,8 +88,6 @@
     </div>
     <div class="board" id="board">
 
-        <div class="cell "></div>
-        <div class="cell "></div>
         <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
@@ -92,22 +95,39 @@
         <div class="cell"></div>
         <div class="cell"></div>
         <div class="cell"></div>
-    <div>
-            
-     <div>
-            <button class="btn" >RESTART</button>
-
+        <div class="cell"></div>
+        <div class="cell"></div>
     </div>
+    
+        <button class="btn" >RESTART</button>
+
+    
     <script>
 
         let board =  [-1, -1 ,-1 ,-1 ,-1 ,-1 ,-1 ,-1 ,-1 ];
-        
+        let iconElement = {
+            1 : "player1",
+            2 : "player2",
+        };
+
       
+
+
         function renderBoard (){
 
+        const boardElement = document.getElementById("board")
 
-      }
-      renderBoard()
+        boardElement.innerHTML = "";
+        
+        board.forEach(( cellElement , index )=> {
+            
+            boardElement.innerHTML +=`
+              <div class="cell ${iconElement[cellElement]} "> </div>
+            `
+                  });
+                
+           }
+        renderBoard()
 
       
     </script>
