@@ -34,6 +34,9 @@
             background-color:  rgb(173, 73, 225);
         }
         .cell{
+            display: flex;
+            justify-content: center;
+            align-items: center;
             border: px solid rgb(188, 82, 192);
             height: 115px;
             width: 115px;
@@ -78,6 +81,12 @@
         .player2{
            background-color:rgb(107, 32, 148);
         }
+        img {
+            width: 90px;
+            height: 90px;
+            
+        }
+       
         
         </style>
 </head>
@@ -104,7 +113,7 @@
     
     <script>
 
-        let board =  [-1, -1 ,-1 ,-1 ,-1 ,-1 ,-1 ,-1 ,-1 ];
+        let board =  [-1, -1 ,-1 ,-1 ,-1 ,-1 ,-1 , -1 ,-1 ];
         let iconElement = {
             1 : "player1",
             2 : "player2",
