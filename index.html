@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> tic tac toe </title>
     <style>
-        *{
-            padding: 0;margin: 0;
+        * {
+            padding: 0;
+            margin: 0;
         }
-        body{
+
+        body {
             background-color: rgb(46, 7, 63);
 
         }
-       
-        .nav{
-            background-color:rgb(47, 15, 61);
+
+        .nav {
+            background-color: rgb(47, 15, 61);
             padding: 15px;
             margin-bottom: 25px;
             position: sticky;
             top: 0;
-           color: rgb(173, 73, 225);
+            color: rgb(173, 73, 225);
         }
-      
-        .board{
-            display:flex;
+
+
+        .board {
+            display: flex;
             border: px solid;
             flex-wrap: wrap;
             width: 400px;
-             padding: 60px 40px;
+            padding: 60px 40px;
             margin: 0 auto;
             border-radius: 30px;
             justify-content: center;
-            background-color:  rgb(173, 73, 225);
+            background-color: rgb(173, 73, 225);
         }
-        .cell{
+
+        .cell {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -41,21 +46,23 @@
             height: 115px;
             width: 115px;
             border-radius: 5px;
-            background-color:  rgb(122, 28, 172);
+            background-color: rgb(122, 28, 172);
             margin: 2px;
-             transition: 30ms;
+            transition: 30ms;
         }
-          .cell:hover {
+
+        .cell:hover {
             cursor: pointer;
             box-shadow: 0 0 6px 0.8px black;
             transition: 10ms;
             border: 0px solid rgb(147, 62, 150);
 
         }
-         .btn {
+
+        .btn {
             position: absolute;
-            right: 180px;
-            top:360px;
+            right: 170px;
+            top: 360px;
             height: 60px;
             width: 170px;
             text-align: center;
@@ -65,36 +72,40 @@
             border-radius: 10px;
             cursor: pointer;
             background-color: rgb(173, 73, 225);
-             transition: 30ms;
+            transition: 30ms;
 
         }
-            .btn:hover {
+
+        .btn:hover {
             cursor: pointer;
             box-shadow: 0 0 6px 0.8px black;
-           
+
             border: 0px solid rgb(183, 79, 187);
             background-color: rgb(122, 28, 172);
         }
-        .player1{
-          background-color:rgb(107, 32, 148);
+
+        .player1 {
+            background-color: rgb(107, 32, 148);
         }
-        .player2{
-           background-color:rgb(107, 32, 148);
+
+        .player2 {
+            background-color: rgb(107, 32, 148);
         }
+
         img {
             width: 90px;
             height: 90px;
-            
+
         }
-       
-        
-        </style>
+    </style>
 </head>
+
 <body>
-    
+
     <div class="nav">
         <h1>TicTacToe.com</h1>
     </div>
+    <h2 id="player-turn"><img src="circle.png"><span class="turn-text">Turn</span> </h2>
     <div class="board" id="board">
 
         <div class="cell"></div>
@@ -107,17 +118,18 @@
         <div class="cell"></div>
         <div class="cell"></div>
     </div>
-    
-        <button class="btn" onclick="restart()">RESTART</button>
 
-    
+    <button class="btn" onclick="restart()">RESTART</button>
+
+
+
     <script>
 
-        const board =  [-1, -1 ,-1 ,-1 ,-1 ,-1 , -1 , -1 ,-1 ];
-        turn = 1 ;
+        const board = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
+        turn = 1;
         let iconElement = {
-            1 : "player1",
-            2 : "player2",
+            1: "player1",
+            2: "player2",
         };
 
         let imgElement = {
@@ -125,47 +137,57 @@
             2: "cross.png",
         }
 
+        let turnImg = {
+            1: "circle.png",
+            2: "cross.png",
+        }
 
-        function renderBoard (){
+        function renderBoard() {
 
-        const boardElement = document.getElementById("board")
+            const boardElement = document.getElementById("board")
+            const turnElement = document.getElementById("player-turn")
+            turnElement.innerHTML = `
+         <h2>  <img class="turn-icon" src="${turnImg[turn]}"><span class="turn-text">Turn</span> </h2>
+        `;
 
-        boardElement.innerHTML = "";
-        
-        board.forEach(( cellElement , index )=> {
+            boardElement.innerHTML = "";
 
-            const cellPlayerImg = imgElement[cellElement];
-            const renderimage=cellPlayerImg ? `<img src = "${imgElement[cellElement]}"/> ` : "" ; 
-                     
-            
-            boardElement.innerHTML +=`
+            board.forEach((cellElement, index) => {
+
+                const cellPlayerImg = imgElement[cellElement];
+                const renderimage = cellPlayerImg ? `<img src = "${imgElement[cellElement]}"/> ` : "";
+
+
+                boardElement.innerHTML += `
               <div class="cell ${iconElement[cellElement]} " onclick="renderTurn(${index})">  ${renderimage}  </div>
             `
-                  });
-                
-           }
+            });
+
+        }
         renderBoard();
 
-        function renderTurn(indexElement){
+        function renderTurn(indexElement) {
 
             if (board[indexElement] == -1) {
-                board[indexElement]= turn ;
-                turn = turn == 1 ? 2 : 1 ;
+                board[indexElement] = turn;
+                turn = turn == 1 ? 2 : 1;
                 renderBoard();
-            }else{
+            } else {
                 alert('invalid move')
             }
-            
+
         }
+
         function restart() {
-        
+
             location.reload();
-            
+
         }
 
 
-      
+
     </script>
-    
+
 </body>
+
 </html>
