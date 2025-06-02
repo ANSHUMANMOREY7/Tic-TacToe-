@@ -214,10 +214,15 @@
         }
         function winnerCheck() {
             
-         
-        }
-        function winnCheckPosition() {
            
+        }
+        function winnCheckPosition(player , p1 ,p2 ,p3 ) {
+            
+            if (board[p1]==player && board[p2]==player && board[p3]==player ) {
+                return true
+            }else{
+                return false
+            }
         }
 
         function restart() {
