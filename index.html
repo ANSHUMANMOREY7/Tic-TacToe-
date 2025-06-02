@@ -113,7 +113,7 @@
     
     <script>
 
-        let board =  [-1, -1 ,-1 ,-1 ,-1 ,-1 ,-1 , -1 ,-1 ];
+        const board =  [-1, -1 ,-1 ,-1 ,-1 ,-1 ,-1 , -1 ,-1 ];
         let iconElement = {
             1 : "player1",
             2 : "player2",
@@ -138,12 +138,18 @@
                      
             
             boardElement.innerHTML +=`
-              <div class="cell ${iconElement[cellElement]} ">  ${renderimage}  </div>
+              <div class="cell ${iconElement[cellElement]} " onclick="renderTurn()">  ${renderimage}  </div>
             `
                   });
                 
            }
-        renderBoard()
+        renderBoard();
+
+        function renderTurn(){
+
+            
+            
+        }
 
       
     </script>
