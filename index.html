@@ -113,7 +113,8 @@
     
     <script>
 
-        const board =  [-1, -1 ,-1 ,-1 ,-1 ,-1 ,-1 , -1 ,-1 ];
+        const board =  [-1, -1 ,-1 ,-1 ,-1 ,-1 , -1 , -1 ,-1 ];
+        turn = 1 ;
         let iconElement = {
             1 : "player1",
             2 : "player2",
@@ -138,16 +139,22 @@
                      
             
             boardElement.innerHTML +=`
-              <div class="cell ${iconElement[cellElement]} " onclick="renderTurn()">  ${renderimage}  </div>
+              <div class="cell ${iconElement[cellElement]} " onclick="renderTurn(${index})">  ${renderimage}  </div>
             `
                   });
                 
            }
         renderBoard();
 
-        function renderTurn(){
+        function renderTurn(indexElement){
 
-            
+            if (board[indexElement] == -1) {
+                board[indexElement]= turn ;
+                turn = turn == 1 ? 2 : 1 ;
+                renderBoard();
+            }else{
+                alert('invalid move')
+            }
             
         }
 
